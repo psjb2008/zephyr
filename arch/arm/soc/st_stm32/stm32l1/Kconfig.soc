@@ -1,0 +1,38 @@
+# Kconfig - ST Microelectronics STM32L1 MCU line
+#
+# Copyright (c) 2016 Open-RnD Sp. z o.o.
+# Copyright (c) RnDity Sp. z o.o.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+choice
+prompt "STM32L1x MCU Selection"
+depends on SOC_SERIES_STM32L1X
+
+config SOC_STM32L152XE
+	bool "STM32L152XE"
+	select SOC_STM32L152_DENSITY_DEVICE
+
+config SOC_STM32L152XD
+	bool "STM32L152XD"
+	select SOC_STM32L152_DENSITY_DEVICE
+
+endchoice
+
+config SOC_STM32L152_DENSITY_DEVICE
+	bool
+	help
+	 * Low density Value line devices
+	 * Medium density Value line devices
+	 * High density Value line devices
+	 * XL-density devices Value line devices
+
+config SOC_STM32L152_CONNECTIVITY_LINE_DEVICE
+	bool
+	help
+	 Connectivity line devices are STM32L152xx
+	 microcontrollers.  They are intended for applications where
+	 connectivity and real-time performances are required such as
+	 industrial control, control panels for security applications, UPS or
+	 home audio.  

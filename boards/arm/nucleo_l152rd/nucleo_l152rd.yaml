@@ -1,0 +1,9 @@
+identifier: nucleo_l153rd
+name: NUCLEO-L152RD
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+ram: 48
+flash: 384

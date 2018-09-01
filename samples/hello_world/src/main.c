@@ -6,8 +6,38 @@
 
 #include <zephyr.h>
 #include <misc/printk.h>
+#include <device.h>
+#include <gpio.h>
+
+
+/* Change this if you have an LED connected to a custom port */
+#ifndef LED0_GPIO_CONTROLLER
+#define LED0_GPIO_CONTROLLER 	LED0_GPIO_PORT
+#endif
+
+#define LED_PORT LED0_GPIO_CONTROLLER
+
+/* Change this if you have an LED connected to a custom pin */
+#define LED	LED0_GPIO_PIN
+
+/* 1000 msec = 1 sec */
+#define SLEEP_TIME 	1000
 
 void main(void)
 {
-	printk("Hello World! %s\n", CONFIG_ARCH);
+	int cnt = 0;
+	struct device *dev;
+
+	dev = device_get_binding(LED_PORT);
+	/* Set LED pin as output */
+	gpio_pin_configure(dev, LED, GPIO_DIR_OUT);
+
+	while (1) {
+		/* Set pin to HIGH/LOW every 1 second */
+		gpio_pin_write(dev, LED, cnt % 2);
+		cnt++; 
+
+		printk("Hello World! %d %s\n", cnt, CONFIG_ARCH);
+		k_sleep(SLEEP_TIME);
+	}
 }

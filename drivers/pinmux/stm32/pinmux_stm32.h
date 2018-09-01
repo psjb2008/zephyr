@@ -14,7 +14,7 @@
 #include <zephyr/types.h>
 #include <stddef.h>
 #include <clock_control.h>
-#ifdef CONFIG_SOC_SERIES_STM32F1X
+#if defined(CONFIG_SOC_SERIES_STM32F1X) 
 #include <dt-bindings/pinctrl/stm32-pinctrlf1.h>
 #else
 #include <dt-bindings/pinctrl/stm32-pinctrl.h>
@@ -113,6 +113,8 @@ void stm32_setup_pins(const struct pin_config *pinconf,
 #include "pinmux_stm32f7.h"
 #elif CONFIG_SOC_SERIES_STM32L0X
 #include "pinmux_stm32l0.h"
+#elif CONFIG_SOC_SERIES_STM32L1X
+#include "pinmux_stm32l1.h"
 #elif CONFIG_SOC_SERIES_STM32L4X
 #include "pinmux_stm32l4x.h"
 #endif

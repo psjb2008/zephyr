@@ -98,7 +98,11 @@ static ALWAYS_INLINE void _ExcSetup(void)
 	NVIC_SetPriority(PendSV_IRQn, 0xff);
 
 #ifdef CONFIG_CPU_CORTEX_M_HAS_BASEPRI
-	NVIC_SetPriority(SVCall_IRQn, _EXC_SVC_PRIO);
+	#ifdef STM32L152xD //kemp
+	    NVIC_SetPriority(SVC_IRQn, _EXC_SVC_PRIO);
+	#else
+		NVIC_SetPriority(SVCall_IRQn, _EXC_SVC_PRIO);
+	#endif
 #endif
 
 #ifdef CONFIG_CPU_CORTEX_M_HAS_PROGRAMMABLE_FAULT_PRIOS

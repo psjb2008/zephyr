@@ -1,0 +1,22 @@
+# Kconfig - ST Microelectronics STM32L1 MCU line
+#
+# Copyright (c) 2016 Open-RnD Sp. z o.o.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+if SOC_SERIES_STM32L1X
+
+source "arch/arm/soc/st_stm32/stm32l1/Kconfig.defconfig.stm32l1*"
+
+config SOC_SERIES
+	default "stm32l1"
+
+if GPIO_STM32
+
+config GPIO_STM32_PORTD
+	default y
+
+endif # GPIO_STM32
+
+endif # SOC_SERIES_STM32L1X

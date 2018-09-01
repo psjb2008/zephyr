@@ -752,6 +752,7 @@ if(CONFIG_GEN_ISR_TABLES)
     isrList.bin
     COMMAND ${PYTHON_EXECUTABLE}
     ${ZEPHYR_BASE}/arch/common/gen_isr_tables.py
+    -d
     --output-source isr_tables.c
     --kernel $<TARGET_FILE:zephyr_prebuilt>
     --intlist isrList.bin

@@ -8,6 +8,7 @@
 #include <board.h>
 #include <device.h>
 #include <gpio.h>
+#include <misc/printk.h>
 
 /* Change this if you have an LED connected to a custom port */
 #ifndef LED0_GPIO_CONTROLLER
@@ -32,6 +33,8 @@ void main(void)
 	gpio_pin_configure(dev, LED, GPIO_DIR_OUT);
 
 	while (1) {
+		//printk("Hello World! %s\n", CONFIG_ARCH);
+
 		/* Set pin to HIGH/LOW every 1 second */
 		gpio_pin_write(dev, LED, cnt % 2);
 		cnt++;
